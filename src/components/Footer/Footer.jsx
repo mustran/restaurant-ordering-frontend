@@ -18,3 +18,17 @@ export const Copyright = () => (
         Copyright ©2020 All rights reserved | Developed by ArgDevIO & mustran
     </CopyrightStyled>
 );
+
+const StickyFooter = styled.div`
+    flex-shrink: 0;
+    justify-self: end;
+`;
+
+const Footer = () => (
+    <StickyFooter>
+        <LineBreak top={10} bottom={20} />
+        <Copyright />
+    </StickyFooter>
+);
+
+export default Footer;
