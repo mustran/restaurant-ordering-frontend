@@ -47,7 +47,7 @@ const SpinnerButton = styled.div`
         top: 17.5px;
     `
             : `
-        left: 12px;
+        left: 13.5px;
         top: 17.5px
     `};
 `;
