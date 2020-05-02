@@ -19,7 +19,7 @@ const SidebarStyles = styled.div`
     flex: 1;
     background-color: ${(props) => props.theme.palette.main};
     overflow-y: scroll;
-    height: 805px;
+    height: 780px;
     width: 95px;
     border-radius: 10px;
     position: relative;

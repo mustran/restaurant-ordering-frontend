@@ -17,7 +17,7 @@ const ProductsContainer = styled.div`
     grid-gap: 20px;
     padding: 20px;
     overflow-y: scroll;
-    height: 805px;
+    height: 780px;
     /* IE10+ */
     -ms-overflow-style: none;
     /* Firefox */
