@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { LineBreak } from '../../../Footer/Footer';
 import NumericInput from '../../../NumericInput/NumericInput';
 import colors from '../../../../theme/colors';
+import { BsHeart } from 'react-icons/bs';
 
 const StyledProduct = styled.div`
     color: ${colors.white};
@@ -35,6 +36,29 @@ const Serving = styled.p`
     color: white;
 `;
 
+const AddToBagButton = styled.button`
+    background-color: ${(props) => props.theme.palette.main};
+    width: 90%;
+    height: 30px;
+    border-radius: 5px;
+`;
+
+const FavIcon = styled(BsHeart)`
+    border: 1px solid ${(props) => props.theme.palette.main};
+    color: ${(props) => props.theme.palette.main};
+    border-radius: 5px;
+    width: 10%;
+    margin-left: 5px;
+    padding: 5px;
+    box-sizing: content-box;
+    cursor: pointer;
+`;
+
+const AddToBagAndFavWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
 const Product = ({ productName, description }) => {
     return (
         <StyledProduct>
@@ -46,12 +70,12 @@ const Product = ({ productName, description }) => {
                 <Serving>Serving</Serving>
                 <NumericInput value={0} min={0} max={5} />
             </ServingWrapper>
-            <div>
-                <button>
+            <AddToBagAndFavWrapper>
+                <AddToBagButton>
                     <span>logo</span>Add to bag
-                </button>
-                <span>Fav</span>
-            </div>
+                </AddToBagButton>
+                <FavIcon />
+            </AddToBagAndFavWrapper>
         </StyledProduct>
     );
 };
