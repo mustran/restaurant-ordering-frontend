@@ -4,6 +4,7 @@ import { LineBreak } from '../../../Footer/Footer';
 import NumericInput from '../../../NumericInput/NumericInput';
 import colors from '../../../../theme/colors';
 import { BsHeart } from 'react-icons/bs';
+import { FaShoppingBag } from 'react-icons/fa';
 
 const StyledProduct = styled.div`
     color: ${colors.white};
@@ -38,9 +39,17 @@ const Serving = styled.p`
 
 const AddToBagButton = styled.button`
     background-color: ${(props) => props.theme.palette.main};
+    color: ${colors.white};
     width: 90%;
     height: 30px;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    font-weight: ${(props) => props.theme.weights.bold};
+    outline: none;
+    border: none;
+    font-size: ${(props) => props.theme.sizes.large};
+    cursor: pointer;
 `;
 
 const FavIcon = styled(BsHeart)`
@@ -52,6 +61,10 @@ const FavIcon = styled(BsHeart)`
     padding: 5px;
     box-sizing: content-box;
     cursor: pointer;
+
+    &:hover {
+        color: ${colors.white};
+    }
 `;
 
 const AddToBagAndFavWrapper = styled.div`
@@ -72,8 +85,9 @@ const Product = ({ productName, description }) => {
             </ServingWrapper>
             <AddToBagAndFavWrapper>
                 <AddToBagButton>
-                    <span>logo</span>Add to bag
+                    <FaShoppingBag size={18} /> Add to bag
                 </AddToBagButton>
+                <span>1240 den</span>
                 <FavIcon />
             </AddToBagAndFavWrapper>
         </StyledProduct>
