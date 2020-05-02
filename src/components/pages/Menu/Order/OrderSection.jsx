@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../../../theme/colors';
 import { FaShoppingBag } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const StyledOrder = styled.div`
     background-color: ${colors.garden};
@@ -24,6 +25,7 @@ const OrderButton = styled.button`
     border: none;
     outline: none;
     text-transform: uppercase;
+    cursor: pointer;
 `;
 
 const OrderSection = () => {
@@ -32,7 +34,9 @@ const OrderSection = () => {
             <YourOrder>
                 <FaShoppingBag /> Your order
             </YourOrder>
-            <OrderButton>Log in</OrderButton>
+            <Link to="/login">
+                <OrderButton>Log in</OrderButton>
+            </Link>
         </StyledOrder>
     );
 };
