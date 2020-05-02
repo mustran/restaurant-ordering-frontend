@@ -6,12 +6,12 @@ import GardenLogoHorizontal from '../../assets/images/garden_logo_horizontal.svg
 import NavItems from './NavItems/NavItems';
 
 const LogoStyled = styled.img`
-    height: 83px;
+    height: 60px;
     width: 255px;
 `;
 
 const HeaderWrapper = styled.div`
-    padding-top: 10px;
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
     margin-top: 18px;
