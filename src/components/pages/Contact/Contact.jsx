@@ -13,10 +13,18 @@ const ContactContainer = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     margin-top: 30px;
+
+    @media (max-width: 1300px) {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
 `;
 
 const ContactWrapper = styled.div`
-    /* background-color: purple; */
+    /* @media (max-width: 1300px) {
+        justify-self: center;
+    } */
 `;
 
 const ContactMap = styled.div`
