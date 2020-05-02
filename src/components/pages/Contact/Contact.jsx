@@ -76,7 +76,7 @@ const ContactUs = styled.div`
     text-align: start;
 `;
 
-const GardenColorSpan = styled.span`
+export const GardenColorSpan = styled.span`
     color: ${(props) => props.theme.palette.main};
 `;
 

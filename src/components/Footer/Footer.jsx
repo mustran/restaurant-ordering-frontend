@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../../theme/colors';
+import { GardenColorSpan } from '../pages/Contact/Contact';
+import { FaHeart } from 'react-icons/fa';
 
 export const LineBreak = styled.div`
     border-bottom: 2px solid ${(props) => props.theme.palette.main};
@@ -15,7 +17,10 @@ const CopyrightStyled = styled.p`
 
 export const Copyright = () => (
     <CopyrightStyled>
-        Copyright ©2020 All rights reserved | Developed by ArgDevIO & mustran
+        Copyright ©2020 All rights reserved | Made with{' '}
+        <FaHeart color={`${colors.garden}`} /> by{' '}
+        <GardenColorSpan>ArgDevIO </GardenColorSpan>&
+        <GardenColorSpan> mustran</GardenColorSpan>
     </CopyrightStyled>
 );
 
