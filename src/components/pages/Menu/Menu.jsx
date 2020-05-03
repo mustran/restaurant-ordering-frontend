@@ -5,6 +5,9 @@ import { LineBreak, Copyright } from '../../Footer/Footer';
 import Product from './Products/Product';
 import Products from './Products/Products';
 import OrderSection from './Order/OrderSection';
+import { getProducts } from '../../../redux/products/reducer';
+import { connect } from 'react-redux';
+import { loginToggler } from '../../../redux/auth/actions';
 
 const Wrapper = styled.div`
     /* background-color: red; */
@@ -21,7 +24,6 @@ const Wrapper = styled.div`
         "products"
         "sidebar"
     } */
-
 `;
 
 const ProductsAndOrderWrapper = styled.div`
@@ -84,7 +86,7 @@ const products = [
     },
 ];
 
-const Menu = () => (
+const Menu = ({ products, logOut }) => (
     <>
         <LineBreak top={20} bottom={10} />
         <>
@@ -93,10 +95,19 @@ const Menu = () => (
                 <ProductsAndOrderWrapper>
                     <Products products={products} />
                     <OrderSection />
+                    {/* <button onClick={logOut}>Log out!</button> */}
                 </ProductsAndOrderWrapper>
             </Wrapper>
         </>
     </>
 );
 
-export default Menu;
+const mapStateToProps = (state) => ({
+    products: getProducts(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    logOut: () => dispatch(loginToggler()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
