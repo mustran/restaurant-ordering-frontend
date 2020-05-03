@@ -36,8 +36,9 @@ const Products = ({ products }) => (
         {products.map((p) => (
             <Product
                 key={uuid()}
-                productName={p.product}
+                productName={p.productName}
                 description={p.description}
+                price={p.price}
             />
         ))}
     </ProductsContainer>

@@ -72,7 +72,7 @@ const AddToBagAndFavWrapper = styled.div`
     justify-content: space-between;
 `;
 
-const Product = ({ productName, description }) => {
+const Product = ({ productName, description, price }) => {
     return (
         <StyledProduct>
             <ProductName>{productName}</ProductName>
@@ -87,7 +87,7 @@ const Product = ({ productName, description }) => {
                 <AddToBagButton>
                     <FaShoppingBag size={18} /> Add to bag
                 </AddToBagButton>
-                <span>1240 den</span>
+                <span>{price} den</span>
                 <FavIcon />
             </AddToBagAndFavWrapper>
         </StyledProduct>
