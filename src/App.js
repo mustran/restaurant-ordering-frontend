@@ -6,6 +6,7 @@ import HomePage from './components/pages/Home/HomePage';
 import Menu from './components/pages/Menu/Menu';
 import Footer from './components/Footer/Footer';
 import Contact from './components/pages/Contact/Contact';
+import ProtectedRoute from './routes/ProtectedRoute';
 
 const AppWrapper = styled.div`
     width: 80%;
@@ -30,9 +31,13 @@ const App = () => {
                     <Route exact path="/">
                         <HomePage />
                     </Route>
-                    <Route exact path="/menu">
-                        <Menu />
-                    </Route>
+                    <ProtectedRoute
+                        exact
+                        path="/menu"
+                        // get user from redux
+                        user={false}
+                        component={Menu}
+                    />
                     <Route exact path="/contact">
                         <Contact />
                     </Route>
