@@ -19,10 +19,11 @@ const SidebarStyles = styled.div`
     flex: 1;
     background-color: ${(props) => props.theme.palette.main};
     overflow-y: scroll;
-    height: 780px;
+    height: 760px;
     width: 95px;
     border-radius: 10px;
     position: relative;
+    /* grid-area: sidebar; */
 
     /* IE10+ */
     -ms-overflow-style: none;

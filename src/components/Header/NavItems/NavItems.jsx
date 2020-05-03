@@ -14,7 +14,7 @@ const StyledNavItem = styled(NavLink).attrs({ active })`
     margin-left: 20px;
     font-weight: ${(props) => props.theme.weights.bold};
     &.${active} {
-        color: ${colors.garden};
+        color: ${(props) => props.theme.palette.main};
     }
 `;
 

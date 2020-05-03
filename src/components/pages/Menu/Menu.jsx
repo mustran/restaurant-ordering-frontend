@@ -10,8 +10,30 @@ const Wrapper = styled.div`
     /* background-color: red; */
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 95px 3fr;
+    grid-template-columns: 95px 1fr;
     grid-gap: 20px;
+
+    /* todo */
+    /* @media (max-width: 662px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 500px 100px 20px;
+        grid-template-areas: 
+        "products"
+        "sidebar"
+    } */
+
+`;
+
+const ProductsAndOrderWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    @media (max-width: 1016px) {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        /* background-color: red; */
+    }
 `;
 
 const products = [
@@ -68,8 +90,10 @@ const Menu = () => (
         <>
             <Wrapper>
                 <Sidebar />
-                <Products products={products} />
-                <OrderSection />
+                <ProductsAndOrderWrapper>
+                    <Products products={products} />
+                    <OrderSection />
+                </ProductsAndOrderWrapper>
             </Wrapper>
         </>
     </>

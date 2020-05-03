@@ -15,12 +15,28 @@ const CopyrightStyled = styled.p`
     color: ${colors.white};
 `;
 
+const HyperLink = styled.a`
+    text-decoration: none;
+    span:hover {
+        color: ${colors.emerald};
+    }
+`;
+
+const FooterHeart = styled(FaHeart)`
+    color: ${(props) => props.theme.palette.main};
+`;
+
 export const Copyright = () => (
     <CopyrightStyled>
-        Copyright ©2020 All rights reserved | Made with{' '}
-        <FaHeart color={`${colors.garden}`} /> by{' '}
-        <GardenColorSpan>ArgDevIO </GardenColorSpan>&
-        <GardenColorSpan> mustran</GardenColorSpan>
+        Copyright ©2020 All rights reserved | Made with <FooterHeart /> by
+        &nbsp;
+        <HyperLink href="https://github.com/ArgDevIO">
+            <GardenColorSpan bold>ArgDevIO </GardenColorSpan>
+        </HyperLink>
+        &
+        <HyperLink href="https://github.com/mustran">
+            <GardenColorSpan bold> mustran</GardenColorSpan>
+        </HyperLink>
     </CopyrightStyled>
 );
 

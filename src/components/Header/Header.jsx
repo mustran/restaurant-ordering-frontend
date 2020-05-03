@@ -11,7 +11,7 @@ const LogoStyled = styled.img`
 `;
 
 const HeaderWrapper = styled.div`
-    padding-top: 20px;
+    padding-top: 10px;
     display: flex;
     justify-content: space-between;
     margin-top: 18px;

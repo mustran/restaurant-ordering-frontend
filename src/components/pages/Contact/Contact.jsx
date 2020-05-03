@@ -78,6 +78,7 @@ const ContactUs = styled.div`
 
 export const GardenColorSpan = styled.span`
     color: ${(props) => props.theme.palette.main};
+    font-weight: ${(props) => (props.bold ? `bold` : `normal`)};
 `;
 
 const Contact = () => (

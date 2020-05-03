@@ -16,7 +16,7 @@ const NumericInputStyled = styled.input`
     height: 25px;
     padding: 0px;
     font-size: ${(props) => props.theme.sizes.medium};
-    border: 2px solid ${colors.garden};
+    border: 2px solid ${(props) => props.theme.palette.main};
     z-index: 1;
     text-align: center;
     background-color: rgba(0, 0, 0, 0);

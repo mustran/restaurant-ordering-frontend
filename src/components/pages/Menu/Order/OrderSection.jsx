@@ -5,10 +5,14 @@ import { FaShoppingBag } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const StyledOrder = styled.div`
-    background-color: ${colors.garden};
+    background-color: ${(props) => props.theme.palette.main};
     width: 323px;
     height: 116px;
     border-radius: 10px;
+    /* grid-area: orderSection; */
+    @media (max-width: 1016px) {
+        width: 100%;
+    }
 `;
 
 const YourOrder = styled.h2`

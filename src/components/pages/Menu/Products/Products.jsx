@@ -5,6 +5,7 @@ import MenuBackground from '../../../../assets/images/food-eggs-breakfast-fried-
 import Product from './Product';
 
 const ProductsContainer = styled.div`
+    /* grid-area: products; */
     display: grid;
     align-content: flex-start;
     width: 100%;
@@ -17,7 +18,7 @@ const ProductsContainer = styled.div`
     grid-gap: 20px;
     padding: 20px;
     overflow-y: scroll;
-    height: 780px;
+    height: 760px;
     /* IE10+ */
     -ms-overflow-style: none;
     /* Firefox */
