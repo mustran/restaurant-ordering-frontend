@@ -5,6 +5,10 @@ import NumericInput from '../../../NumericInput/NumericInput';
 import colors from '../../../../theme/colors';
 import { BsHeart } from 'react-icons/bs';
 import { FaShoppingBag } from 'react-icons/fa';
+import { addProductToBag } from '../../../../redux/bag/actions';
+import { connect } from 'react-redux';
+import { getIsLoggedIn } from '../../../../redux/auth/reducer';
+import { useHistory } from 'react-router';
 
 const StyledProduct = styled.div`
     color: ${colors.white};
@@ -72,7 +76,26 @@ const AddToBagAndFavWrapper = styled.div`
     justify-content: space-between;
 `;
 
-const Product = ({ productName, description, price }) => {
+const Product = ({
+    productName,
+    description,
+    price,
+    addProductToBag,
+    isLoggedIn,
+}) => {
+    const history = useHistory();
+
+    const handleAddToBag = (productName) => {
+        // if (!isLoggedIn) {
+        //     // history.push('/login');
+        //     history.push({
+        //         pathname: '/login',
+        //         state: { from: '/menu' },
+        //     });
+        // }
+        addProductToBag(productName);
+    };
+
     return (
         <StyledProduct>
             <ProductName>{productName}</ProductName>
@@ -84,7 +107,7 @@ const Product = ({ productName, description, price }) => {
                 <NumericInput value={0} min={0} max={5} />
             </ServingWrapper>
             <AddToBagAndFavWrapper>
-                <AddToBagButton>
+                <AddToBagButton onClick={() => handleAddToBag(productName)}>
                     <FaShoppingBag size={18} /> Add to bag
                 </AddToBagButton>
                 <span>{price} den</span>
@@ -94,4 +117,12 @@ const Product = ({ productName, description, price }) => {
     );
 };
 
-export default Product;
+const mapStateToProps = (state) => ({
+    isLoggedIn: getIsLoggedIn(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    addProductToBag: (productToAdd) => dispatch(addProductToBag(productToAdd)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);
