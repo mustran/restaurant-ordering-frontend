@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import uuid from 'uuid/dist/v4';
 import { ArrowUp, ArrowDown } from '../Arrows/Arrows';
@@ -56,6 +56,9 @@ const ArrowContainer = styled.div`
 `;
 
 const Sidebar = () => {
+    const types = categories.map((cat) => cat.category);
+    const [active, setActive] = useState(types[0]);
+
     return (
         <SidebarStyles>
             {/* <ArrowContainer>
@@ -63,7 +66,12 @@ const Sidebar = () => {
             </ArrowContainer> */}
             <SidebarContainer>
                 {categories.map((c) => (
-                    <SidebarItem category={c.category} key={uuid()} />
+                    <SidebarItem
+                        category={c.category}
+                        key={uuid()}
+                        setActiveCategory={() => setActive(c.category)}
+                        active={active === c.category}
+                    />
                 ))}
             </SidebarContainer>
             {/* <ArrowContainer down>
