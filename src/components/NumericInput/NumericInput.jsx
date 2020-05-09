@@ -18,13 +18,13 @@ const NumericInputStyled = styled.input`
     font-size: ${(props) => props.theme.sizes.medium};
     border: 2px solid ${(props) => props.theme.palette.main};
     z-index: 1;
-    text-align: center;
+    text-align: start;
     background-color: rgba(0, 0, 0, 0);
-    pointer-events: none;
-    padding-left: 14px;
+    padding-left: 20px;
     padding-top: 2px;
     color: ${colors.white};
     border-radius: 5px;
+    -moz-appearance: textfield;
 `;
 
 const SpinnerButton = styled.div`
