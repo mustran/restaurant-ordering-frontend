@@ -29,7 +29,7 @@ const LoginFormContainer = styled.div`
     box-shadow: 0px 3px 6px #00000029;
 `;
 
-const LoginWrapper = styled.div`
+const LoginWrapper = styled.form`
     width: 80%;
     margin: 10% auto 10% auto;
 `;
@@ -55,6 +55,7 @@ const LogIn = (props) => {
     const [password, setPassword] = useState('');
 
     const handleLogin = (e) => {
+        e.preventDefault();
         let response = props.loginUser(username, password);
         response.then((data) => {
             console.log(data);
@@ -78,7 +79,7 @@ const LogIn = (props) => {
     return (
         <LoginContainer>
             <LoginFormContainer>
-                <LoginWrapper>
+                <LoginWrapper onSubmit={(e) => handleLogin(e)}>
                     <LoginHeader>Login to place orders</LoginHeader>
                     <Button
                         color="#3B5998"
