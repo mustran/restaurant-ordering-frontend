@@ -9,6 +9,7 @@ import { addProductToBag } from '../../../../redux/bag/actions';
 import { connect } from 'react-redux';
 import { getIsLoggedIn } from '../../../../redux/auth/reducer';
 import { useHistory } from 'react-router';
+import Button from '../../../Button/Button';
 
 const StyledProduct = styled.div`
     color: ${colors.white};
@@ -107,9 +108,11 @@ const Product = ({
                 <NumericInput value={0} min={0} max={5} />
             </ServingWrapper>
             <AddToBagAndFavWrapper>
-                <AddToBagButton onClick={() => handleAddToBag(productName)}>
-                    <FaShoppingBag size={18} /> Add to bag
-                </AddToBagButton>
+                <Button fullWidth onClick={() => handleAddToBag(productName)}>
+                    <div>
+                        <FaShoppingBag size={18} /> Add to bag
+                    </div>
+                </Button>
                 <span>{price} den</span>
                 <FavIcon />
             </AddToBagAndFavWrapper>
