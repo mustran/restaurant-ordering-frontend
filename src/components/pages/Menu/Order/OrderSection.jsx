@@ -7,6 +7,7 @@ import { getBagProducts } from '../../../../redux/bag/reducer';
 import { connect } from 'react-redux';
 import { removeProductFromBag } from '../../../../redux/bag/actions';
 import { getIsLoggedIn } from '../../../../redux/auth/reducer';
+import Button from '../../../Button/Button';
 
 const StyledOrder = styled.div`
     background-color: ${(props) => props.theme.palette.main};
@@ -21,21 +22,6 @@ const StyledOrder = styled.div`
 
 const YourOrder = styled.h2`
     color: white;
-`;
-
-const OrderButton = styled.button`
-    color: ${colors.white};
-    background-color: ${colors.backgroundColor};
-    font-weight: ${(props) => props.theme.weights.bold};
-    width: 95%;
-    height: 35px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin-bottom: 10px;
-    ${(props) => (props.isLoggedIn ? `display: none` : '')}
 `;
 
 const OrderSection = ({ bagItems, removeItemFromBag, isLoggedIn }) => {
@@ -64,9 +50,16 @@ const OrderSection = ({ bagItems, removeItemFromBag, isLoggedIn }) => {
                 );
             })}
             {/* <Link to="/login"> */}
-            <OrderButton isLoggedIn={isLoggedIn} onClick={() => handleLogIn()}>
-                Log in
-            </OrderButton>
+            {!isLoggedIn ? (
+                <Button
+                    style={{ width: '90%', margin: `10px auto` }}
+                    color={colors.backgroundColor}
+                    fullWidth
+                    onClick={() => handleLogIn()}
+                >
+                    Log in
+                </Button>
+            ) : null}
             {/* </Link> */}
         </StyledOrder>
     );
