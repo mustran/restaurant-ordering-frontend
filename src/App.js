@@ -35,13 +35,16 @@ const App = ({ isLoggedIn }) => {
                     <Route exact path="/">
                         <HomePage />
                     </Route>
-                    <ProtectedRoute
+                    {/* <ProtectedRoute
                         exact
                         path="/menu"
                         // get user from redux
                         authenticated={isLoggedIn}
                         component={Menu}
-                    />
+                    /> */}
+                    <Route exact path="/menu">
+                        <Menu />
+                    </Route>
                     <Route exact path="/contact">
                         <Contact />
                     </Route>
