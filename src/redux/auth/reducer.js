@@ -27,7 +27,7 @@ const authReducer = (state = initialState, action) => {
                 username: action.payload.username,
                 token: action.payload.token,
                 preload: false,
-                loggedIn: true,
+                isLoggedIn: true,
             };
         case FETCH_DATA_ERROR:
             return {
