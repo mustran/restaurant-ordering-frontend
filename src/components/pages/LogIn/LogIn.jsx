@@ -9,10 +9,10 @@ import { FaFacebookF } from 'react-icons/fa';
 import { GrMail } from 'react-icons/gr';
 import { LineBreak } from '../../Footer/Footer';
 import { AiOutlineLock } from 'react-icons/ai';
-import UserInput from './UserInput';
-import CustomLink from '../../LinkTag/CustomLink';
 import { fetchAuthUserData } from '../../../redux/auth/fetchAuthUserData';
 import { useState } from 'react';
+import Button from '../../Button/Button';
+import Input from '../../Input/Input';
 
 const LoginContainer = styled.div`
     display: grid;
@@ -80,47 +80,39 @@ const LogIn = (props) => {
             <LoginFormContainer>
                 <LoginWrapper>
                     <LoginHeader>Login to place orders</LoginHeader>
-                    <CustomLink color={colors.blue}>
+                    <Button
+                        color="#3B5998"
+                        fullWidth
+                        onClick={() => console.log('IT WORKS')}
+                    >
                         <FaFacebookF
                             size={22}
                             color={colors.white}
                             href="www.facebook.com"
                         />
-                    </CustomLink>
+                    </Button>
                     <LineStyles>
                         <LineBreak />
                         <p>or</p>
                         <LineBreak />
                     </LineStyles>
-                    {/* <UserInput
-                        logo={<GrMail size={25} />}
+                    <Input
                         type="text"
                         name="username"
-                        placeholder="Email"
+                        placeholder="email"
                         onChange={(e) => setUsername(e.target.value)}
-                    /> */}
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Email"
-                        onChange={(e) => setUsername(e.target.value)}
+                        icon={<GrMail color={colors.garden} />}
                     />
-                    <input
+                    <Input
                         type="password"
                         name="password"
-                        placeholder="Password"
+                        placeholder="password"
                         onChange={(e) => setPassword(e.target.value)}
+                        icon={<AiOutlineLock color={colors.garden} />}
                     />
-                    {/* <UserInput
-                        logo={<AiOutlineLock size={25} />}
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                    /> */}
-                    {/* <CustomLink onClick={(e) => handleLogin(e)}>
+                    <Button fullWidth onClick={(e) => handleLogin(e)}>
                         Login
-                    </CustomLink> */}
-                    <button onClick={(e) => handleLogin(e)}>Login</button>
+                    </Button>
                 </LoginWrapper>
             </LoginFormContainer>
         </LoginContainer>
