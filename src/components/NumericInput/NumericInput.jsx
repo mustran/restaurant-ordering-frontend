@@ -25,6 +25,11 @@ const NumericInputStyled = styled.input`
     color: ${colors.white};
     border-radius: 5px;
     -moz-appearance: textfield;
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
 `;
 
 const SpinnerButton = styled.div`
