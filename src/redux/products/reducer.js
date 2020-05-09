@@ -5,52 +5,79 @@ import {
     FETCH_DYNAMIC_PRODUCTS,
 } from './actions';
 
-const initialState = {
-    preload: false,
-    products: [],
-};
-
 const mockProductsData = {
     Breakfast: [
         {
-            productName: "Breakfast1",
-            description: "2 fried eggs, 2 chicken sausages",
-            price: 140
+            productName: 'Breakfast1',
+            description: '2 fried eggs, 2 chicken sausages',
+            price: 140,
         },
         {
-            productName: "Breakfast2",
-            description: "5 fried eggs, 5 chicken sausages, white cheese, 2 cucumber, tomatoes, olives, honey",
-            price: 440
+            productName: 'Breakfast2',
+            description:
+                '5 fried eggs, 5 chicken sausages, white cheese, 2 cucumber, tomatoes, olives, honey',
+            price: 440,
         },
         {
-            productName: "Breakfast3",
-            description: "2 fried eggs, 2 chicken sausages, white cheese, 2 cucumber,",
-            price: 340
+            productName: 'Breakfast3',
+            description:
+                '2 fried eggs, 2 chicken sausages, white cheese, 2 cucumber,',
+            price: 340,
         },
         {
-            productName: "Breakfast4",
-            description: "5 fried eggs, 5 chicken sausages, white cheese, 2 cucumber, tomatoes, olives, honey",
-            price: 540
+            productName: 'Breakfast4',
+            description:
+                '5 fried eggs, 5 chicken sausages, white cheese, 2 cucumber, tomatoes, olives, honey',
+            price: 540,
+        },
+        {
+            productName: 'Breakfast3',
+            description:
+                '2 fried eggs, 2 chicken sausages, white cheese, 2 cucumber,',
+            price: 340,
+        },
+        {
+            productName: 'Breakfast4',
+            description:
+                '5 fried eggs, 5 chicken sausages, white cheese, 2 cucumber, tomatoes, olives, honey',
+            price: 540,
+        },
+        {
+            productName: 'Breakfast3',
+            description:
+                '2 fried eggs, 2 chicken sausages, white cheese, 2 cucumber,',
+            price: 340,
+        },
+        {
+            productName: 'Breakfast4',
+            description:
+                '5 fried eggs, 5 chicken sausages, white cheese, 2 cucumber, tomatoes, olives, honey',
+            price: 540,
         },
     ],
     Salad: [
         {
-            productName: "Salad1",
-            description: "salad description 1",
-            price: 240
-        },  
+            productName: 'Salad1',
+            description: 'salad description 1',
+            price: 240,
+        },
         {
-            productName: "Salad2",
-            description: "salad description 2",
-            price: 240
-        },  
+            productName: 'Salad2',
+            description: 'salad description 2',
+            price: 240,
+        },
         {
-            productName: "Salad3",
-            description: "salad description 3",
-            price: 440
-        },  
+            productName: 'Salad3',
+            description: 'salad description 3',
+            price: 440,
+        },
     ],
     Meze: [7, 8, 9],
+};
+
+const initialState = {
+    preload: false,
+    products: mockProductsData.Breakfast,
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -79,7 +106,7 @@ const productsReducer = (state = initialState, action) => {
         }
         default:
             return {
-                ...initialState,
+                ...state,
             };
     }
 };
