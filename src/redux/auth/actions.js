@@ -2,6 +2,7 @@ export const FETCH_DATA_PRELOAD = 'FETCH_DATA_PRELOAD';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_DATA_ERROR = 'FETCH_DATA_ERROR';
 export const LOG_OUT_USER = 'LOG_OUT_USER';
+export const LOGIN_USER = 'LOGIN_USER';
 
 //experimental
 export const LOGIN_TOGGLER = 'LOGIN_TOGGLER';
@@ -21,3 +22,4 @@ export const logOutUser = () => {
 
 //experimental
 export const loginToggler = () => ({ type: LOGIN_TOGGLER });
+export const loginUser = () => ({ type: LOGIN_USER });

@@ -4,6 +4,7 @@ import {
     FETCH_DATA_SUCCESS,
     LOG_OUT_USER,
     LOGIN_TOGGLER,
+    LOGIN_USER,
 } from './actions';
 
 const initialState = {
@@ -33,13 +34,18 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 preload: false,
             };
+        case LOGIN_USER:
+            return {
+                ...state,
+                isLoggedIn: true,
+            };
         case LOG_OUT_USER:
             return {
-                ...initialState,
+                ...state,
             };
         case LOGIN_TOGGLER:
             return {
-                ...initialState,
+                ...state,
                 isLoggedIn: !state.isLoggedIn,
             };
         default:
