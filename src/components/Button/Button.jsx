@@ -4,8 +4,6 @@ import ButtonWrapper from './ButtonWrapper';
 
 const ContentHolder = styled.span`
     padding: 0.2rem;
-    display: grid;
-    grid-auto-flow: column;
     grid-gap: 0.2em;
 `;
 
