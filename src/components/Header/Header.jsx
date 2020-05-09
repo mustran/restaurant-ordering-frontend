@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Languages from './Languages/Languages';
 import GardenLogoHorizontal from '../../assets/images/garden_logo_horizontal.svg';
 import NavItems from './NavItems/NavItems';
+import { connect } from 'react-redux';
+import { getUsername } from '../../redux/auth/reducer';
 
 const LogoStyled = styled.img`
     height: 60px;
@@ -33,7 +35,7 @@ const NavLinksWrapper = styled.div`
     place-items: center;
 `;
 
-const Header = () => {
+const Header = ({ username }) => {
     const languages = [
         { language: 'AL' },
         { language: 'MK' },
@@ -43,7 +45,7 @@ const Header = () => {
     const navLinks = [
         { navLink: 'Menu', to: '/menu' },
         { navLink: 'Contact', to: '/contact' },
-        { navLink: 'Log In', to: '/login' },
+        { navLink: username || 'Log In', to: '/login' },
     ];
 
     return (
@@ -59,4 +61,8 @@ const Header = () => {
     );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+    username: getUsername(state),
+});
+
+export default connect(mapStateToProps, null)(Header);
