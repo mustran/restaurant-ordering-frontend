@@ -6,10 +6,11 @@ import {
     LOGIN_TOGGLER,
     LOGIN_USER,
 } from './actions';
+import jwt from 'jwt-decode';
 
 const initialState = {
     preload: false,
-    username: '',
+    user: '',
     token: [],
     isLoggedIn: false,
 };
@@ -22,9 +23,10 @@ const authReducer = (state = initialState, action) => {
                 preload: true,
             };
         case FETCH_DATA_SUCCESS:
+            const jwtDecoded = jwt(action.payload.token);
             return {
                 ...state,
-                username: action.payload.username,
+                user: jwtDecoded,
                 token: action.payload.token,
                 preload: false,
                 isLoggedIn: true,
@@ -53,7 +55,7 @@ const authReducer = (state = initialState, action) => {
     }
 };
 
-export const getUsername = (state) => state.auth.username;
+export const getUser = (state) => state.auth.user;
 export const getToken = (state) => state.auth.token;
 export const getPreload = (state) => state.auth.preload;
 export const getIsLoggedIn = (state) => state.auth.isLoggedIn;
