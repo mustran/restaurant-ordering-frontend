@@ -8,6 +8,11 @@ import OrderSection from './Order/OrderSection';
 import { getProducts } from '../../../redux/products/reducer';
 import { connect } from 'react-redux';
 import { loginToggler } from '../../../redux/auth/actions';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
+import { getCategories } from '../../../redux/categories/reducer';
+import { fetchCategories } from '../../../redux/categories/fetchCategories';
 
 const Wrapper = styled.div`
     /* background-color: red; */
@@ -86,28 +91,40 @@ const products = [
     },
 ];
 
-const Menu = ({ products, logOut }) => (
-    <>
-        <LineBreak top={20} bottom={10} />
+const Menu = ({ products, categories, fetchCategories }) => {
+    useEffect(() => {
+        console.log('USE EFFECT HERE');
+        fetchCategories();
+    }, []);
+    console.log(categories);
+    const categoriesArray = categories.map((cat) => cat.name);
+
+    console.log('ONLY CATEGORIES');
+    console.log(categoriesArray);
+    return (
         <>
-            <Wrapper>
-                <Sidebar />
-                <ProductsAndOrderWrapper>
-                    <Products products={products} />
-                    <OrderSection />
-                    {/* <button onClick={logOut}>Log out!</button> */}
-                </ProductsAndOrderWrapper>
-            </Wrapper>
+            <LineBreak top={20} bottom={10} />
+            <>
+                <Wrapper>
+                    <Sidebar categories={categoriesArray}/>
+                    <ProductsAndOrderWrapper>
+                        <Products products={products} />
+                        <OrderSection />
+                        {/* <button onClick={logOut}>Log out!</button> */}
+                    </ProductsAndOrderWrapper>
+                </Wrapper>
+            </>
         </>
-    </>
-);
+    );
+};
 
 const mapStateToProps = (state) => ({
+    categories: getCategories(state),
     products: getProducts(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    logOut: () => dispatch(loginToggler()),
+    fetchCategories: () => dispatch(fetchCategories()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

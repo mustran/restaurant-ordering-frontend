@@ -24,12 +24,12 @@ const ListItemsContainer = styled.li`
 
 const SidebarItem = ({
     category,
-    updateProducts,
+    getProducts,
     setActiveCategory,
     active,
 }) => {
     const handleOnClick = (product) => {
-        updateProducts(product);
+        getProducts(product);
         setActiveCategory();
     };
 

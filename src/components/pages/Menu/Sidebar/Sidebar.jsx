@@ -7,16 +7,16 @@ import { getActiveCategory } from '../../../../redux/products/reducer';
 import { setActiveCategory } from '../../../../redux/products/actions';
 import { connect } from 'react-redux';
 
-const categories = [
-    { category: 'Breakfast' },
-    { category: 'Salad' },
-    { category: 'Meze' },
-    { category: 'Chicken' },
-    { category: 'Beef' },
-    { category: 'Fish' },
-    { category: 'Pasta' },
-    { category: 'Pizza' },
-];
+// const categories = [
+//     { category: 'Breakfast' },
+//     { category: 'Salad' },
+//     { category: 'Meze' },
+//     { category: 'Chicken' },
+//     { category: 'Beef' },
+//     { category: 'Fish' },
+//     { category: 'Pasta' },
+//     { category: 'Pizza' },
+// ];
 
 const SidebarStyles = styled.div`
     flex: 1;
@@ -58,8 +58,8 @@ const ArrowContainer = styled.div`
         props.down ? `position: absolute; bottom: 0; width: 100%` : ''}
 `;
 
-const Sidebar = ({ active, setActiveCategory }) => {
-    const types = categories.map((cat) => cat.category);
+const Sidebar = ({ categories, active, setActiveCategory }) => {
+    // const types = categories.map((cat) => cat.category);
 
     return (
         <SidebarStyles>
@@ -67,12 +67,12 @@ const Sidebar = ({ active, setActiveCategory }) => {
                 <ArrowUp />
             </ArrowContainer> */}
             <SidebarContainer>
-                {categories.map((c) => (
+                {categories.map((category) => (
                     <SidebarItem
-                        category={c.category}
+                        category={category}
                         key={uuid()}
-                        setActiveCategory={() => setActiveCategory(c.category)}
-                        active={active === c.category}
+                        setActiveCategory={() => setActiveCategory(category)}
+                        active={active === category}
                     />
                 ))}
             </SidebarContainer>
