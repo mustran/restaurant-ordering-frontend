@@ -82,7 +82,7 @@ const LogIn = (props) => {
                 <LoginWrapper onSubmit={(e) => handleLogin(e)}>
                     <LoginHeader>Login to place orders</LoginHeader>
                     <Button
-                        color="#3B5998"
+                        color={colors.navy}
                         fullWidth
                         onClick={() => console.log('IT WORKS')}
                     >
