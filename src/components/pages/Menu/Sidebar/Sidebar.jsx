@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import uuid from 'uuid/dist/v4';
 import { ArrowUp, ArrowDown } from '../Arrows/Arrows';
 import SidebarItem from './SidebarItem';
+import { getActiveCategory } from '../../../../redux/products/reducer';
+import { setActiveCategory } from '../../../../redux/products/actions';
+import { connect } from 'react-redux';
 
 const categories = [
     { category: 'Breakfast' },
@@ -55,9 +58,8 @@ const ArrowContainer = styled.div`
         props.down ? `position: absolute; bottom: 0; width: 100%` : ''}
 `;
 
-const Sidebar = () => {
+const Sidebar = ({ active, setActiveCategory }) => {
     const types = categories.map((cat) => cat.category);
-    const [active, setActive] = useState(types[0]);
 
     return (
         <SidebarStyles>
@@ -69,7 +71,7 @@ const Sidebar = () => {
                     <SidebarItem
                         category={c.category}
                         key={uuid()}
-                        setActiveCategory={() => setActive(c.category)}
+                        setActiveCategory={() => setActiveCategory(c.category)}
                         active={active === c.category}
                     />
                 ))}
@@ -81,4 +83,12 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+const mapStateToProps = (state) => ({
+    active: getActiveCategory(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    setActiveCategory: (category) => dispatch(setActiveCategory(category)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

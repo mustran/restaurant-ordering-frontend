@@ -3,6 +3,7 @@ import {
     FETCH_PRODUCTS_PRELOAD,
     FETCH_PRODUCTS_SUCCESS,
     FETCH_DYNAMIC_PRODUCTS,
+    ACTIVE_CATEGORY,
 } from './actions';
 
 const mockProductsData = {
@@ -78,6 +79,7 @@ const mockProductsData = {
 const initialState = {
     preload: false,
     products: mockProductsData.Breakfast,
+    active: Object.keys(mockProductsData)[0],
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -104,6 +106,12 @@ const productsReducer = (state = initialState, action) => {
                 products: mockProductsData[action.payload],
             };
         }
+        case ACTIVE_CATEGORY: {
+            return {
+                ...state,
+                active: action.payload,
+            };
+        }
         default:
             return {
                 ...state,
@@ -113,5 +121,6 @@ const productsReducer = (state = initialState, action) => {
 
 export const getProducts = (state) => state.products.products;
 export const getProductsPreload = (state) => state.products.preload;
+export const getActiveCategory = (state) => state.products.active;
 
 export default productsReducer;
