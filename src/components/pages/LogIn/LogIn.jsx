@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getIsLoggedIn, getPreload } from '../../../redux/auth/reducer';
-import { loginToggler, loginUser } from '../../../redux/auth/actions';
+import { loginToggler } from '../../../redux/auth/actions';
 import styled from 'styled-components';
 import { useHistory } from 'react-router';
 import colors from '../../../theme/colors';
@@ -13,6 +13,10 @@ import { fetchAuthUserData } from '../../../redux/auth/fetchAuthUserData';
 import { useState } from 'react';
 import Button from '../../Button/Button';
 import Input from '../../Input/Input';
+import { logInValidationSchema } from '../../../formik/LoginValidation';
+import { Formik, Form } from 'formik';
+import FormikTextInput from '../../../formik/FormikTextInput';
+import { Link } from 'react-router-dom';
 
 const LoginContainer = styled.div`
     display: grid;
@@ -29,7 +33,7 @@ const LoginFormContainer = styled.div`
     box-shadow: 0px 3px 6px #00000029;
 `;
 
-const LoginWrapper = styled.form`
+const LoginWrapper = styled.div`
     width: 80%;
     margin: 10% auto 10% auto;
 `;
@@ -49,18 +53,26 @@ const LineStyles = styled.div`
     }
 `;
 
+const ForgotPassword = styled(Link)`
+    color: white;
+`;
+const logInInitialValues = {
+    email: '',
+    password: '',
+};
+
 const LogIn = (props) => {
     const history = useHistory();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    // const [username, setUsername] = useState('');
+    // const [password, setPassword] = useState('');
 
     const handleLogin = (e) => {
-        e.preventDefault();
-        let response = props.loginUser(username, password);
-        response.then((data) => {
-            console.log(data);
-            if (data) history.push('/menu');
-        });
+        // e.preventDefault();
+        // let response = props.loginUser(username, password);
+        // response.then((data) => {
+        //     console.log(data);
+        //     if (data) history.push('/menu');
+        // });
         // for protected routes
         // let pathToGo = props.history.location.state.from.pathname;
         // let pathToGo = props.location.state;
@@ -76,46 +88,62 @@ const LogIn = (props) => {
 
     if (props.loading) return <p>Loading</p>;
 
+    const handleSubmit = (email, password) => {
+        props.loginUser(email, password);
+        const pathToGo = props.location.state;
+        if (pathToGo === null) history.push('/menu');
+        history.push(pathToGo.from);
+    };
+
     return (
         <LoginContainer>
-            <LoginFormContainer>
-                <LoginWrapper onSubmit={(e) => handleLogin(e)}>
-                    <LoginHeader>Login to place orders</LoginHeader>
-                    <Button
-                        color={colors.navy}
-                        fullWidth
-                        onClick={() => console.log('IT WORKS')}
-                    >
-                        <FaFacebookF
-                            size={22}
-                            color={colors.white}
-                            href="www.facebook.com"
-                        />
-                    </Button>
-                    <LineStyles>
-                        <LineBreak />
-                        <p>or</p>
-                        <LineBreak />
-                    </LineStyles>
-                    <Input
-                        type="text"
-                        name="username"
-                        placeholder="email"
-                        onChange={(e) => setUsername(e.target.value)}
-                        icon={<GrMail color={colors.garden} />}
-                    />
-                    <Input
-                        type="password"
-                        name="password"
-                        placeholder="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        icon={<AiOutlineLock color={colors.garden} />}
-                    />
-                    <Button fullWidth onClick={(e) => handleLogin(e)}>
-                        Login
-                    </Button>
-                </LoginWrapper>
-            </LoginFormContainer>
+            <Formik
+                initialValues={logInInitialValues}
+                validationSchema={logInValidationSchema}
+                onSubmit={({ email, password }) =>
+                    handleSubmit(email, password)
+                }
+            >
+                <LoginFormContainer>
+                    <Form>
+                        <LoginWrapper>
+                            <LoginHeader>Login to place orders</LoginHeader>
+                            <Button type="button" color={colors.navy} fullWidth>
+                                <FaFacebookF
+                                    size={22}
+                                    color={colors.white}
+                                    href="www.facebook.com"
+                                />
+                            </Button>
+                            <LineStyles>
+                                <LineBreak />
+                                <p>or</p>
+                                <LineBreak />
+                            </LineStyles>
+                            <FormikTextInput
+                                label="Email"
+                                icon={<GrMail color={colors.garden} />}
+                                name="email"
+                                type="email"
+                                id="email"
+                            />
+                            <FormikTextInput
+                                label="Password"
+                                icon={<AiOutlineLock color={colors.garden} />}
+                                name="password"
+                                type="password"
+                                id="password"
+                            />
+                            <Button type="submit" fullWidth>
+                                Login
+                            </Button>
+                            <ForgotPassword to="/forgot-password">
+                                Forgot password?
+                            </ForgotPassword>
+                        </LoginWrapper>
+                    </Form>
+                </LoginFormContainer>
+            </Formik>
         </LoginContainer>
     );
 };
@@ -126,9 +154,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    toggleLoginState: () => dispatch(loginToggler()),
-    loginUser: (username, password) =>
-        dispatch(fetchAuthUserData(username, password)),
+    loginUser: (email, password) =>
+        dispatch(fetchAuthUserData(email, password)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
