@@ -57,9 +57,18 @@ const OrderSection = ({ bagItems, removeItemFromBag, isLoggedIn }) => {
                     fullWidth
                     onClick={() => handleLogIn()}
                 >
-                    Log in
+                    LOG IN
                 </Button>
-            ) : null}
+            ) : (
+                <Button
+                    style={{ width: '90%', margin: `10px auto` }}
+                    color={colors.backgroundColor}
+                    fullWidth
+                    // onClick={() => handleLogIn()}
+                >
+                    ORDER NOW
+                </Button>
+            )}
             {/* </Link> */}
         </StyledOrder>
     );

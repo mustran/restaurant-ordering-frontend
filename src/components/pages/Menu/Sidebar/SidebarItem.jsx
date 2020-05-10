@@ -45,8 +45,7 @@ const SidebarItem = ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    updateProducts: (categoryType) =>
-        dispatch(fetchDynamicProducts(categoryType)),
+    getProducts: (categoryType) => dispatch(fetchDynamicProducts(categoryType)),
 });
 
 export default connect(null, mapDispatchToProps)(SidebarItem);
